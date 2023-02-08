@@ -7,9 +7,9 @@ TABLE OF CONTENTS
 */
 
 /* 
-==================
+#################
 1. Global Styling 
-==================
+#################
 */
 
 *,
@@ -26,15 +26,15 @@ body {
 }
 
 /* 
-=============
+#############
 2. Typography
-=============
+#############
 */
 
 /* 
-=========
+#########
 3. Layout
-=========
+#########
 */
 
 /* nav {
@@ -46,21 +46,53 @@ body {
  */
 
 .intro,
+.about,
 .projects,
 .resume {
+    height: 50vh;
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-items: center;
 }
 
-/* 3.1 Parallax Scrolling */
+section.intro {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+}
+
+.portrait-container {
+    --border-width: 8px;
+    --portrait-width: 400px;
+    --portrait-height: auto;
+    justify-self: center;
+    position: fixed;
+    width: var(--portrait-width);
+    height: var(--portrait-width);
+    border-radius: 50%;
+    border: 8px solid black;
+    background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
+    background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
+}
+
+img {
+    position: absolute;
+    width: calc(var(--portrait-width) - (var(--border-width) * 2));
+    height: var(--portrait-height);
+    bottom: 0;
+    border-bottom-left-radius: var(--portrait-width);
+    border-bottom-right-radius: var(--portrait-width);
+    filter: grayscale(30%);
+    backdrop-filter: grayscale(75%);
+    -webkit-backdrop-filter: grayscale(75%);
+}
 
 /* 
-Sets content sections to 50% of the viewport height. Done this way to make expansion easier
+######################
+3.1 Parallax Scrolling 
+######################
 */
-section:not(.parallax) {
-    margin: 0 500px;
-    height: 50vh;
-}
 
 /* 
 Parallax backgrounds
@@ -86,15 +118,18 @@ The actual parallax effect takes place here. Also sets image to grayscale
     background-attachment: fixed;
     position: relative;
     filter: grayscale(100%);
+    z-index: -1;
 }
+
 /* 
-Gradien overlay over parallax backgrounds
+Gradient overlay over parallax backgrounds
 */
 .parallax::before {
     content: "";
     position: absolute;
     height: 100%;
     width: 100%;
+    z-index: 1;
     background: linear-gradient(to top, hsl(0, 0%, 0%), hsl(0, 0%, 50%));
     opacity: 0.7;
 }
@@ -102,6 +137,6 @@ Gradien overlay over parallax backgrounds
 /*
 Sets all but the first parallax backgrounds at 50% of the viewport height. Done this way to make expansion easier.
 */
-.parallax:not(:first-child) {
+.parallax:not(.parallax-one) {
     min-height: 50vh;
 }
