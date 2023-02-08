@@ -1,4 +1,16 @@
-/* Global Styling */
+/* 
+TABLE OF CONTENTS
+1. Global Styling
+2. Typography
+3. Layout
+    3.1 Parallax Scrolling
+*/
+
+/* 
+==================
+1. Global Styling 
+==================
+*/
 
 *,
 *::after,
@@ -8,6 +20,88 @@
     padding: 0;
 }
 
-/* Typography */
+html,
+body {
+    height: 100%;
+}
 
-/* Layout */
+/* 
+=============
+2. Typography
+=============
+*/
+
+/* 
+=========
+3. Layout
+=========
+*/
+
+/* nav {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    background: white;
+}
+ */
+
+.intro,
+.projects,
+.resume {
+    display: grid;
+    place-items: center;
+}
+
+/* 3.1 Parallax Scrolling */
+
+/* 
+Sets content sections to 50% of the viewport height. Done this way to make expansion easier
+*/
+section:not(.parallax) {
+    margin: 0 500px;
+    height: 50vh;
+}
+
+/* 
+Parallax backgrounds
+*/
+.parallax-one {
+    background: url(./assets/img/ana-borquez-uF4PfwZPOR8-unsplash.jpg);
+}
+
+.parallax-two {
+    background: url(./assets/img/anna-hunko-akVefdJ2q_o-unsplash.jpg);
+}
+
+.parallax-three {
+    background: url(./assets/img/marten-bjork-zr-zkaQd7f4-unsplash.jpg);
+}
+
+/* 
+The actual parallax effect takes place here. Also sets image to grayscale
+*/
+.parallax {
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    filter: grayscale(100%);
+}
+/* 
+Gradien overlay over parallax backgrounds
+*/
+.parallax::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, hsl(0, 0%, 0%), hsl(0, 0%, 50%));
+    opacity: 0.7;
+}
+
+/*
+Sets all but the first parallax backgrounds at 50% of the viewport height. Done this way to make expansion easier.
+*/
+.parallax:not(:first-child) {
+    min-height: 50vh;
+}
