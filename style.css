@@ -62,6 +62,9 @@ section.intro {
     position: fixed;
 }
 
+/* 
+Portrait Styling
+*/
 .portrait-container {
     --border-width: 8px;
     --portrait-width: 400px;
