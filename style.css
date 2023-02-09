@@ -95,6 +95,12 @@ img {
     -webkit-backdrop-filter: grayscale(75%);
 }
 
+h1 {
+    grid-column: 5 / span 4;
+    font-size: 5rem;
+    color: whitesmoke;
+}
+
 /* 
 ######################
 3.1 Parallax Scrolling 
