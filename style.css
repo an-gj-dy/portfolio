@@ -63,7 +63,7 @@ section.intro {
 }
 
 .portrait-container {
-    --border-width: 8px;
+    --border-width: 2px;
     --portrait-width: 400px;
     --portrait-height: auto;
     justify-self: center;
@@ -71,7 +71,7 @@ section.intro {
     width: var(--portrait-width);
     height: var(--portrait-width);
     border-radius: 50%;
-    border: 8px solid black;
+    border: var(--border-width) solid hsla(0, 0%, 100%, 0.7);
     background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
     background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
 }
