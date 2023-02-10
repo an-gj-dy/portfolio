@@ -32,7 +32,7 @@
 }
 
 :root {
-    --fnt-clr-light: hsl(0, 0%, 96%);
+    --fnt-clr-light: hsl(0, 0%, 100%);
     --fnt-clr-dark: hsl(0, 0%, 0%);
 }
 
@@ -68,43 +68,51 @@ h6 {
 #########
 */
 
-.intro,
-.about,
-.projects,
-.skills {
-    height: 50vh;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
+section {
+    height: 100vh;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 /* 
 ###############
-3.1 Intro page
+3.1 Intro Page
 ###############
 */
 
-section.intro {
-    width: 100%;
-    height: 100vh;
-    grid-template-columns: repeat(5, 1fr);
-    position: absolute;
+.intro {
+    background: url(./assets/img/anna-hunko-gZgsYzi-Qe0-unsplash.jpg) center;
+    background-size: cover;
+}
+
+.intro-wrapper {
+    display: grid;
+    grid-template-areas:
+        "portrait fullname"
+        "portrait nav";
+    grid-auto-rows: 1fr;
+    background: hsla(0, 0%, 100%, 0.13);
+    border: 2px solid hsla(0, 0%, 100%, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px hsl(0, 0%, 5%), 0.6;
+    gap: 1em;
+    padding: 2rem;
 }
 
 .portrait-container {
-    --border-width: 10px;
+    --border-width: 8px;
     --portrait-width: 20vw;
     --portrait-height: auto;
     position: relative;
-    grid-column: 2;
+    grid-area: portrait;
     place-self: center;
     width: var(--portrait-width);
     height: var(--portrait-width);
     border-radius: 50%;
-    border: var(--border-width) solid hsla(0, 0%, 96%, 0.75);
-    background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
-    background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
+    border: var(--border-width) solid var(--fnt-clr-light);
 }
 
 .portrait {
@@ -115,80 +123,23 @@ section.intro {
     border-bottom-left-radius: var(--portrait-width);
     border-bottom-right-radius: var(--portrait-width);
     filter: grayscale(30%);
-    backdrop-filter: grayscale(75%);
-    -webkit-backdrop-filter: grayscale(75%);
-}
-
-.intro-text-container {
-    grid-column: 3 / span 2;
 }
 
 h1 {
-    color: hsl(0, 0%, 96%);
+    color: var(--fnt-clr-light);
     font-size: clamp(1px, 4vw, 5vw);
+    grid-area: fullname;
+    align-self: flex-end;
 }
 
-/* 
-#############
-4. Navigation
-#############
-*/
-
-.static-nav span {
-    top: 20px;
+.intro-nav {
+    align-items: flex-start;
     cursor: pointer;
     color: var(--fnt-clr-light);
     font-family: "Playfair Display", serif;
     font-size: 1.125rem;
-    margin: 10px 15px 0 0;
 }
 
-/* 
-######################
-5. Parallax Scrolling 
-######################
-*/
-
-.parallax-one {
-    background: url(./assets/img/ana-borquez-uF4PfwZPOR8-unsplash.jpg);
-}
-
-.parallax-two {
-    background: url(./assets/img/anna-hunko-akVefdJ2q_o-unsplash.jpg);
-}
-
-.parallax-three {
-    background: url(./assets/img/marten-bjork-zr-zkaQd7f4-unsplash.jpg);
-}
-
-/* 
-The actual parallax effect takes place here. Also sets image to grayscale
-*/
-.parallax {
-    min-height: 100vh;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    filter: grayscale(100%);
-    z-index: -1;
-}
-
-/* 
-Gradient overlay over parallax backgrounds
-*/
-.parallax::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    background: linear-gradient(to top, hsl(0, 0%, 0%), hsl(0, 0%, 50%));
-    opacity: 0.7;
-}
-
-/*
-Sets all but the first parallax backgrounds at 50% of the viewport height. Done this way to make expansion easier.
-*/
-.parallax:not(.parallax-one) {
-    min-height: 50vh;
+.intro-nav span {
+    margin: 0 1rem 0 0;
 }
