@@ -30,6 +30,21 @@ body {
 2. Typography
 #############
 */
+@font-face {
+    font-family: "Playfair Display";
+    src: local("PlayfairDisplay-Regular"),
+        url("./assets/fonts/static/PlayfairDisplay/woff2/PlayfairDisplay-Regular.woff2")
+            format("woff2");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display";
+}
 
 /* 
 #########
@@ -37,18 +52,10 @@ body {
 #########
 */
 
-/* nav {
-    width: 100%;
-    height: 100px;
-    position: fixed;
-    background: white;
-}
- */
-
 .intro,
 .about,
 .projects,
-.resume {
+.skills {
     height: 50vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -59,21 +66,22 @@ body {
 section.intro {
     width: 100%;
     height: 100vh;
-    position: fixed;
+    position: absolute;
 }
 
 /* 
 Portrait Styling
 */
 .portrait-container {
-    --border-width: 2px;
-    --portrait-width: 400px;
-    justify-self: center;
-    position: fixed;
+    --border-width: 10px;
+    --portrait-width: 20vw;
+    --portrait-height: auto;
+    position: absolute;
+    grid-column: 2;
     width: var(--portrait-width);
     height: var(--portrait-width);
     border-radius: 50%;
-    border: var(--border-width) solid hsla(0, 0%, 100%, 0.6);
+    border: var(--border-width) solid hsla(0, 0%, 100%, 0.75);
     background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
     background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
 }
@@ -88,6 +96,13 @@ img {
     filter: grayscale(30%);
     backdrop-filter: grayscale(75%);
     -webkit-backdrop-filter: grayscale(75%);
+}
+
+h1 {
+    grid-column: 5 / span 4;
+    font-size: 5rem;
+    color: whitesmoke;
+    white-space: nowrap;
 }
 
 /* 
