@@ -1,14 +1,25 @@
 /* 
-TABLE OF CONTENTS
+=====================
+==TABLE OF CONTENTS==
+=====================
 1. Global Styling
+
 2. Typography
+
 3. Layout
-    3.1 Parallax Scrolling
+    3.1 Intro page
+    3.2 About page
+    3.3 Projects page    
+    3.4 Skills page
+
+4. Navigation
+
+5. Parallax Scrolling
 */
 
 /* 
 #################
-1. Global Styling 
+1. Global Styling
 #################
 */
 
@@ -18,6 +29,11 @@ TABLE OF CONTENTS
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+:root {
+    --fnt-clr-light: hsl(0, 0%, 96%);
+    --fnt-clr-dark: hsl(0, 0%, 0%);
 }
 
 html,
@@ -63,6 +79,12 @@ h6 {
     align-items: center;
 }
 
+/* 
+###############
+3.1 Intro page
+###############
+*/
+
 section.intro {
     width: 100%;
     height: 100vh;
@@ -70,9 +92,6 @@ section.intro {
     position: absolute;
 }
 
-/* 
-Portrait Styling
-*/
 .portrait-container {
     --border-width: 10px;
     --portrait-width: 20vw;
@@ -88,7 +107,7 @@ Portrait Styling
     background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
 }
 
-img {
+.portrait {
     position: absolute;
     width: calc(var(--portrait-width) - (var(--border-width) * 2));
     height: auto;
@@ -100,21 +119,36 @@ img {
     -webkit-backdrop-filter: grayscale(75%);
 }
 
-h1 {
+.intro-text-container {
     grid-column: 3 / span 2;
-    font-size: 5rem;
+}
+
+h1 {
     color: hsl(0, 0%, 96%);
+    font-size: clamp(1px, 4vw, 5vw);
+}
+
+/* 
+#############
+4. Navigation
+#############
+*/
+
+.static-nav span {
+    top: 20px;
+    cursor: pointer;
+    color: var(--fnt-clr-light);
+    font-family: "Playfair Display", serif;
+    font-size: 1.125rem;
+    margin: 10px 15px 0 0;
 }
 
 /* 
 ######################
-3.1 Parallax Scrolling 
+5. Parallax Scrolling 
 ######################
 */
 
-/* 
-Parallax backgrounds
-*/
 .parallax-one {
     background: url(./assets/img/ana-borquez-uF4PfwZPOR8-unsplash.jpg);
 }
