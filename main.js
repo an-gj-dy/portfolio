@@ -1,13 +1,18 @@
-const terminalText = (selector, string) => {
-    const heading = document.querySelector(selector);
-    const stringToAnimate = string;
+function typeWriter(selector, interval) {
+    const stringContainer = document.querySelector(selector);
+    const stringToAnimate = Array.from(stringContainer.innerHTML);
+    let finished = false;
+    stringContainer.innerHTML = "";
     let letterCount = 0;
-    setInterval(() => {
+    let intervalID = setInterval(() => {
         if (letterCount < stringToAnimate.length) {
-            heading.innerHTML += stringToAnimate[letterCount];
+            stringContainer.innerHTML += stringToAnimate[letterCount];
             letterCount++;
+        } else if ((letterCount = stringToAnimate.length)) {
+            clearInterval(intervalID);
+            finished = true;
         }
-    }, 100);
-};
+    }, interval);
+}
 
-setTimeout(terminalText, 1000, "h1", "Ante Dybedahl");
+window.addEventListener("DOMContentLoaded", typeWriter("h1", 100));

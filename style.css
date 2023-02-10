@@ -43,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Playfair Display";
+    font-family: "Playfair Display", serif;
 }
 
 /* 
@@ -66,6 +66,7 @@ h6 {
 section.intro {
     width: 100%;
     height: 100vh;
+    grid-template-columns: repeat(5, 1fr);
     position: absolute;
 }
 
@@ -76,12 +77,13 @@ Portrait Styling
     --border-width: 10px;
     --portrait-width: 20vw;
     --portrait-height: auto;
-    position: absolute;
+    position: relative;
     grid-column: 2;
+    place-self: center;
     width: var(--portrait-width);
     height: var(--portrait-width);
     border-radius: 50%;
-    border: var(--border-width) solid hsla(0, 0%, 100%, 0.75);
+    border: var(--border-width) solid hsla(0, 0%, 96%, 0.75);
     background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
     background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
 }
@@ -99,10 +101,9 @@ img {
 }
 
 h1 {
-    grid-column: 5 / span 4;
+    grid-column: 3 / span 2;
     font-size: 5rem;
-    color: whitesmoke;
-    white-space: nowrap;
+    color: hsl(0, 0%, 96%);
 }
 
 /* 
