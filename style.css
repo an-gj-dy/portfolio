@@ -70,8 +70,8 @@ section.intro {
 }
 
 .portrait-container {
-    --border-width: 5px;
-    --portrait-width: 400px;
+    --border-width: 10px;
+    --portrait-width: 20vw;
     --portrait-height: auto;
     position: absolute;
     grid-column: 2;
