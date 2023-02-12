@@ -18,7 +18,7 @@
 const letterTiles = document.querySelectorAll(".home-letters-checkboard p");
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-scrambleText(50, 10);
+scrambleText(50, 15);
 
 letterTiles.forEach((tile) => {
     tile.innerHTML = characters[Math.floor(Math.random() * characters.length)];
@@ -53,3 +53,20 @@ navButtons.forEach((button) => {
         );
     });
 });
+
+/* 
+###############################
+Projects Carousel Functionality
+###############################
+*/
+
+const cardArray = Array.from(
+    document.querySelectorAll(".projects-carousel-card")
+);
+const cardWith = cardArray[0].getBoundingClientRect().width;
+
+const setCarouselCardPositions = (card, index) => {
+    console.log((card.style.left = (cardWith + 20) * index + "px"));
+};
+
+cardArray.forEach(setCarouselCardPositions);

@@ -90,7 +90,6 @@ main {
 }
 
 section {
-    height: 100vh;
     background: #fff;
     display: grid;
     place-items: center;
@@ -102,6 +101,10 @@ section {
 3.1 Home Page 
 ############################
 */
+
+.home {
+    height: 100vh;
+}
 
 .home-wrapper {
     display: grid;
@@ -128,15 +131,46 @@ section {
 */
 
 .projects {
-    padding: 20px;
-    grid-template: 1fr 1fr 1fr/ 1fr 1fr;
-    gap: 20px;
+    height: 50vh;
+    grid-template-rows: repeat(1, 1fr);
 }
 
-.project-card {
-    background-color: red;
+.projects-carousel-container {
+    position: relative;
+    grid-row: 1;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+}
+
+.projects-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
+
+.projects-carousel-card {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    aspect-ratio: 1 / 1.5;
+    background-color: aqua;
+}
+
+.projects-carousel-button {
+    background: none;
+    border: none;
+    stroke: #000;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.next {
+    right: 0;
 }
 
 /* 
