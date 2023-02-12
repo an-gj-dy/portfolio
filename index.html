@@ -1,62 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="main.js" defer></script>
+        <title>Portfolio</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-    <title>Portfolio</title>
-</head>
-
-<body>
-    <header>
-        <nav aria-label="primary">
-        </nav>
-    </header>
-    <main>
-        <section class="intro">
-            <div class="portrait-container">
-                <img class="portrait" src="./assets/img/ante-dybedahl-profile-picture-cutout.png" alt="">
+    <body>
+        <main>
+            <div class="main-wrapper">
+                <section class="home">
+                    <div class="home-wrapper">
+                        <div class="home-letters-checkboard">
+                            <p>0</p>
+                            <p>1</p>
+                            <p>2</p>
+                            <p>3</p>
+                            <p>4</p>
+                            <p>5</p>
+                            <p>6</p>
+                            <p>7</p>
+                            <p>8</p>
+                            <p>9</p>
+                            <p>10</p>
+                            <p>11</p>
+                            <p>12</p>
+                            <p>13</p>
+                            <p>14</p>
+                            <p>15</p>
+                            <p>16</p>
+                            <p>17</p>
+                            <p>18</p>
+                            <p>19</p>
+                            <p>20</p>
+                            <p>21</p>
+                            <p>22</p>
+                            <p>23</p>
+                            <p>24</p>
+                            <p>25</p>
+                            <p>26</p>
+                            <p>27</p>
+                            <p>28</p>
+                            <p>29</p>
+                            <p>30</p>
+                            <p>31</p>
+                            <p>32</p>
+                            <p>33</p>
+                            <p>34</p>
+                            <p>35</p>
+                            <p>36</p>
+                            <p>37</p>
+                            <p>38</p>
+                            <p>39</p>
+                            <p>40</p>
+                            <p>41</p>
+                            <p>42</p>
+                            <p>43</p>
+                            <p>44</p>
+                            <p>45</p>
+                            <p>46</p>
+                            <p>47</p>
+                            <p>48</p>
+                            <p>49</p>
+                            <p>50</p>
+                            <p>51</p>
+                            <p>52</p>
+                            <p>53</p>
+                            <p>54</p>
+                            <p>55</p>
+                            <p>56</p>
+                            <p>57</p>
+                            <p>58</p>
+                            <p>59</p>
+                            <p>60</p>
+                            <p>61</p>
+                            <p>62</p>
+                            <p>63</p>
+                        </div>
+                        <nav aria-label="primary">
+                            <span class="nav-item">HOME</span
+                            ><span class="nav-item">PROJECTS</span
+                            ><a class="nav-item">CONTACT</a>
+                        </nav>
+                    </div>
+                </section>
+                <section class="projects">
+                    <div class="projects-carousel-container">
+                        <button class="projects-carousel-button prev">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-chevron-left"
+                                width="50"
+                                height="50"
+                                viewBox="0 0 24 24"
+                                stroke-width="1"
+                                stroke="#000"
+                                fill="none"
+                                stroke-linecap="butt"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    stroke="none"
+                                    d="M0 0h24v24H0z"
+                                    fill="none"
+                                />
+                                <polyline points="15 6 9 12 15 18" />
+                            </svg></button
+                        ><button class="projects-carousel-button next">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-chevron-right"
+                                width="50"
+                                height="50"
+                                viewBox="0 0 24 24"
+                                stroke-width="1"
+                                stroke="#000"
+                                fill="none"
+                                stroke-linecap="butt"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    stroke="none"
+                                    d="M0 0h24v24H0z"
+                                    fill="none"
+                                />
+                                <polyline points="9 6 15 12 9 18" />
+                            </svg>
+                        </button>
+                        <ul class="projects-carousel-track">
+                            <li class="projects-carousel-card">Project 1</li>
+                            <li class="projects-carousel-card">Project 2</li>
+                            <li class="projects-carousel-card">Project 3</li>
+                            <li class="projects-carousel-card">Project 4</li>
+                            <li class="projects-carousel-card">Project 5</li>
+                        </ul>
+                    </div>
+                </section>
             </div>
-            <div class="intro-text-container">
-                <h1>Ante Dybedahl</h1>
-                <nav class="static-nav" aria-label="secondary">
-                    <span>About me</span>
-                    <span>Projects</span>
-                    <span>Skills</span>
-                    <span>Contact & Resume</span>
-                </nav>
-            </div>
-        </section>
-
-        <!-- First parallax -->
-        <section class="parallax parallax-one">
-        </section>
-
-        <section class="about">
-
-        </section>
-
-        <!-- Second parallax -->
-        <section class="parallax parallax-two"></section>
-
-        <section class="projects">
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-            <div class="project-card"></div>
-        </section>
-
-        <!-- Third parallax -->
-        <section class="parallax parallax-three"></section>
-
-        <section class="skills">
-
-        </section>
-    </main>
-</body>
-
+        </main>
+    </body>
 </html>

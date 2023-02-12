@@ -3,24 +3,19 @@
 ==TABLE OF CONTENTS==
 =====================
 1. Global Styling
-
 2. Typography
-
 3. Layout
-    3.1 Intro page
-    3.2 About page
-    3.3 Projects page    
-    3.4 Skills page
+    3.1 Home page
+    3.2 Projects page
+    3.3 Contact page    
 
 4. Navigation
-
-5. Parallax Scrolling
 */
 
 /* 
-#################
+############################
 1. Global Styling
-#################
+############################
 */
 
 *,
@@ -32,8 +27,13 @@
 }
 
 :root {
-    --fnt-clr-light: hsl(0, 0%, 96%);
+    --fnt-clr-light: hsl(0, 0%, 100%);
     --fnt-clr-dark: hsl(0, 0%, 0%);
+    --gradient-overlay: linear-gradient(0deg, #00000088 30%, #ffffff44, 100%);
+    --border-width: 8px;
+    --portrait-width: 20vw;
+    --header-font: "Oswald", sans-serif;
+    --body-font: "PT Mono";
 }
 
 html,
@@ -42,15 +42,26 @@ body {
 }
 
 /* 
-#############
+############################
 2. Typography
-#############
+############################
 */
 @font-face {
-    font-family: "Playfair Display";
-    src: local("PlayfairDisplay-Regular"),
-        url("./assets/fonts/static/PlayfairDisplay/woff2/PlayfairDisplay-Regular.woff2")
-            format("woff2");
+    font-family: "Oswald";
+    src: local("Oswald"),
+        url("./assets/font/Oswald/Oswald-Regular.woff2") format("woff2"),
+        url("./assets/font/Oswald/Oswald-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PT Mono";
+    src: local("PT Mono"),
+        url("./assets/font/PT-Mono/PTMono-Regular.woff2") format("woff2"),
+        url("./assets/font/PT-Mono/PTMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 h1,
@@ -59,136 +70,123 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Playfair Display", serif;
+    font-family: var(--header-font);
 }
 
 /* 
-#########
+############################
 3. Layout
-#########
+############################
 */
 
-.intro,
-.about,
-.projects,
-.skills {
-    height: 50vh;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    align-items: center;
-}
-
-/* 
-###############
-3.1 Intro page
-###############
-*/
-
-section.intro {
+main {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-wrapper {
+    width: 50vw;
+}
+
+section {
+    background: #fff;
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+/* 
+############################
+3.1 Home Page 
+############################
+*/
+
+.home {
     height: 100vh;
-    grid-template-columns: repeat(5, 1fr);
-    position: absolute;
 }
 
-.portrait-container {
-    --border-width: 10px;
-    --portrait-width: 20vw;
-    --portrait-height: auto;
+.home-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    aspect-ratio: 3 / 1;
+    border: var(--border-width) solid var(--fnt-clr-dark);
+    width: 100%;
+    background-color: var(--gradient-overlay);
+}
+
+.home-letters-checkboard {
+    display: grid;
+    grid-template: repeat(8, 1fr) / repeat(8, 1fr);
+    aspect-ratio: 1/1;
+    border-right: var(--border-width) solid var(--fnt-clr-dark);
+    place-items: center;
+    font-family: var(--body-font);
+}
+
+/* 
+############################
+3.2 Projects page
+############################
+*/
+
+.projects {
+    height: 50vh;
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.projects-carousel-container {
     position: relative;
-    grid-column: 2;
-    place-self: center;
-    width: var(--portrait-width);
-    height: var(--portrait-width);
-    border-radius: 50%;
-    border: var(--border-width) solid hsla(0, 0%, 96%, 0.75);
-    background: url(./assets/img/ante-dybedahl-profile-picture-blur.png) bottom;
-    background-size: calc(var(--portrait-width) - (var(--border-width) * 2));
-}
-
-.portrait {
-    position: absolute;
-    width: calc(var(--portrait-width) - (var(--border-width) * 2));
-    height: auto;
-    bottom: 0;
-    border-bottom-left-radius: var(--portrait-width);
-    border-bottom-right-radius: var(--portrait-width);
-    filter: grayscale(30%);
-    backdrop-filter: grayscale(75%);
-    -webkit-backdrop-filter: grayscale(75%);
-}
-
-.intro-text-container {
-    grid-column: 3 / span 2;
-}
-
-h1 {
-    color: hsl(0, 0%, 96%);
-    font-size: clamp(1px, 4vw, 5vw);
-}
-
-/* 
-#############
-4. Navigation
-#############
-*/
-
-.static-nav span {
-    top: 20px;
-    cursor: pointer;
-    color: var(--fnt-clr-light);
-    font-family: "Playfair Display", serif;
-    font-size: 1.125rem;
-    margin: 10px 15px 0 0;
-}
-
-/* 
-######################
-5. Parallax Scrolling 
-######################
-*/
-
-.parallax-one {
-    background: url(./assets/img/ana-borquez-uF4PfwZPOR8-unsplash.jpg);
-}
-
-.parallax-two {
-    background: url(./assets/img/anna-hunko-akVefdJ2q_o-unsplash.jpg);
-}
-
-.parallax-three {
-    background: url(./assets/img/marten-bjork-zr-zkaQd7f4-unsplash.jpg);
-}
-
-/* 
-The actual parallax effect takes place here. Also sets image to grayscale
-*/
-.parallax {
-    min-height: 100vh;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    filter: grayscale(100%);
-    z-index: -1;
-}
-
-/* 
-Gradient overlay over parallax backgrounds
-*/
-.parallax::before {
-    content: "";
-    position: absolute;
+    grid-row: 1;
     height: 100%;
     width: 100%;
-    z-index: 1;
-    background: linear-gradient(to top, hsl(0, 0%, 0%), hsl(0, 0%, 50%));
-    opacity: 0.7;
+    overflow: hidden;
 }
 
-/*
-Sets all but the first parallax backgrounds at 50% of the viewport height. Done this way to make expansion easier.
+.projects-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
+
+.projects-carousel-card {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    aspect-ratio: 1 / 1.5;
+    background-color: aqua;
+}
+
+.projects-carousel-button {
+    background: none;
+    border: none;
+    stroke: #000;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.next {
+    right: 0;
+}
+
+/* 
+############################
+4. Navigation
+############################
 */
-.parallax:not(.parallax-one) {
-    min-height: 50vh;
+
+nav {
+    display: grid;
+    grid-template: repeat(8, 1fr) / repeat(3, 1fr);
+    place-items: center;
+    width: 100%;
+    font-family: var(--body-font);
+}
+
+nav > * {
+    cursor: pointer;
 }
