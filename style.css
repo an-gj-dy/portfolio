@@ -118,11 +118,27 @@ section {
 
 .home-letters-checkboard {
     display: grid;
+    color: white;
+    background-color: black;
     grid-template: repeat(8, 1fr) / repeat(8, 1fr);
     aspect-ratio: 1/1;
     border-right: var(--border-width) solid var(--fnt-clr-dark);
     place-items: center;
     font-family: var(--body-font);
+    user-select: none;
+}
+
+p.selected {
+    display: grid;
+    place-items: center;
+    border: 1px solid black;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: white;
+    color: black;
+    text-transform: uppercase;
 }
 
 /* 
@@ -137,6 +153,9 @@ section {
     gap: 5px;
     height: 50vh;
     grid-template-rows: 2fr 1fr;
+}
+.projects-carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
 .projects-carousel-container {
@@ -174,6 +193,11 @@ section {
     transition: 400ms;
     border: none;
     cursor: pointer;
+}
+
+.projects-carousel-dot.selected {
+    width: 40px;
+    background: hsl(0, 0%, 50%);
 }
 
 /* 
