@@ -61,7 +61,15 @@ const tilesRowArray = [
     tilesRow8,
 ];
 
-function getRandomCheckboardIndex(string) {
+function delay(ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("");
+        }, ms);
+    });
+}
+
+async function getRandomCheckboardIndex(string) {
     const wordLength = string.length;
     const randRow = Math.floor(Math.random() * 8);
     const randColumn = Math.floor(Math.random() * (8 - wordLength));
@@ -69,6 +77,7 @@ function getRandomCheckboardIndex(string) {
     for (i = 0; i < wordLength; i++) {
         let startIndex = row[randColumn + i];
         startIndex.classList.add("selected");
+        await delay(70);
         startIndex.innerHTML = string[i];
     }
 }
@@ -82,8 +91,8 @@ function scrambleText(speed, duration, string) {
                 characters[Math.floor(Math.random() * characters.length)];
         });
         if (++iterations === duration) {
-            window.clearInterval(intervalID);
             getRandomCheckboardIndex(string);
+            window.clearInterval(intervalID);
         }
     }, speed);
 }
