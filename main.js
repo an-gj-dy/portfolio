@@ -60,13 +60,48 @@ Projects Carousel Functionality
 ###############################
 */
 
-const cardArray = Array.from(
-    document.querySelectorAll(".projects-carousel-card")
+const prevButton = document.querySelector(".projects-carousel-button.prev");
+const nextButton = document.querySelector(".projects-carousel-button.next");
+const carouselItems = Array.from(
+    document.querySelector(".projects-carousel-container").children
 );
-const cardWith = cardArray[0].getBoundingClientRect().width;
+const dots = document.querySelector(".projects-carousel-dots");
+dots.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target.matches(".projects-carousel-dot")) {
+        return;
+    }
+    const index = Array.from(dots.children).indexOf(target);
+    const selector = `.projects-carousel-card:nth-child(${index + 1})`;
+    const card = document.querySelector(selector);
+    card.scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+    });
+});
 
-const setCarouselCardPositions = (card, index) => {
-    console.log((card.style.left = (cardWith + 20) * index + "px"));
-};
+const carouselObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            const target = entry.target;
+            const index = carouselItems.indexOf(target);
+            const selector = `.projects-carousel-dot:nth-child(${index + 1})`;
+            const dot = document.querySelector(selector);
+            if (entry.isIntersecting) {
+                dot.style.width = "40px";
+                dot.style.background = "hsl(0,0%,40%)";
+            } else {
+                dot.style.width = "20px";
+                dot.style.background = "hsl(0, 0%, 70%)";
+            }
+        });
+    },
+    {
+        threshold: 0.51,
+    }
+);
 
-cardArray.forEach(setCarouselCardPositions);
+carouselItems.forEach((item) => {
+    carouselObserver.observe(item);
+});
