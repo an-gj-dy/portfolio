@@ -87,7 +87,7 @@ main {
 }
 
 .main-wrapper {
-    width: 50vw;
+    width: 70vw;
 }
 
 section {
@@ -103,42 +103,83 @@ section {
 
 .home {
     height: 100vh;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .home-wrapper {
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    aspect-ratio: 3 / 1;
     border: var(--border-width) solid var(--fnt-clr-dark);
-    width: 100%;
+    width: 30%;
     background-color: var(--gradient-overlay);
 }
 
-.home-letters-checkboard {
+/* 
+Styling for the menu indicator grid
+*/
+.home-grid {
     display: grid;
     color: white;
     background-color: black;
-    grid-template: repeat(8, 1fr) / repeat(8, 1fr);
     aspect-ratio: 1/1;
-    border-right: var(--border-width) solid var(--fnt-clr-dark);
-    place-items: center;
+    border-top: var(--border-width) solid var(--fnt-clr-dark);
     font-family: var(--body-font);
     user-select: none;
 }
 
-p.selected {
-    display: grid;
-    place-items: center;
-    border: 1px solid black;
-    font-weight: 700;
+.tile-container {
+    position: relative;
+    perspective: 500px;
     width: 100%;
     height: 100%;
-    text-align: center;
+}
+
+.tile-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.tile-container.flipped .tile-content {
+    transform: rotateX(360deg);
+    transition: transform 0.8s;
+}
+
+.tile-container.flipped .tile-content .tile {
+    animation: fadeIn 80ms linear forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.tile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vh;
+    font-weight: 700;
+    height: 100%;
+    width: 100%;
     background: white;
+    backface-visibility: hidden;
     color: black;
-    text-transform: uppercase;
+}
+
+.back {
+    background: black;
+    color: white;
+    transform: rotateX(180deg);
 }
 
 /* 
@@ -207,13 +248,13 @@ p.selected {
 */
 
 nav {
-    display: grid;
-    grid-template: repeat(8, 1fr) / repeat(3, 1fr);
-    place-items: center;
-    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     font-family: var(--body-font);
 }
 
 nav > * {
     cursor: pointer;
+    margin: 1rem 0;
 }

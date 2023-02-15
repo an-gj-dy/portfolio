@@ -36,67 +36,84 @@ Letter Checkboard Scrambler
 */
 
 // Variables
-const letterTiles = Array.from(
-    document.querySelectorAll(".home-letters-checkboard p")
-);
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const tilesRow1 = letterTiles.slice(0, 8);
-const tilesRow2 = letterTiles.slice(8, 16);
-const tilesRow3 = letterTiles.slice(16, 24);
-const tilesRow4 = letterTiles.slice(24, 32);
-const tilesRow5 = letterTiles.slice(32, 40);
-const tilesRow6 = letterTiles.slice(40, 48);
-const tilesRow7 = letterTiles.slice(48, 56);
-const tilesRow8 = letterTiles.slice(56, 64);
-const tilesRowArray = [
-    tilesRow1,
-    tilesRow2,
-    tilesRow3,
-    tilesRow4,
-    tilesRow5,
-    tilesRow6,
-    tilesRow7,
-    tilesRow8,
-];
+const gridContainer = document.querySelector(".home-grid"); //Select the grid container
+const gridRowColSize = 8; //Set how many tiles each row and column should have
+const gridSize = gridRowColSize * gridRowColSize; //Sets the grid size to make it an even square
 
+//Create the grid tiles and append each tile to the grid
+for (let i = 0; i < gridSize; i++) {
+    const tileTemplate = document.getElementsByTagName("template")[0];
+    const tile = tileTemplate.content.cloneNode(true);
+    gridContainer.appendChild(tile);
+}
+gridContainer.style.gridTemplate = `repeat(${gridRowColSize}, 1fr) / repeat(${gridRowColSize}, 1fr)`;
+
+const gridTiles = [...gridContainer.children]; //Turn all tiles into an array
+const gridRows = []; //Store each row as an array
+const gridColumns = []; //Store each column as an array
+
+//Create an array of each ROW and store it in gridRows
+let x = 0;
+for (i = 0; i < gridRowColSize; i++) {
+    let y = x + gridRowColSize;
+    const rowFromGrid = gridTiles.slice(x, y);
+    x += gridRowColSize;
+    gridRows.push(rowFromGrid);
+}
+
+//Create an array of each COLUMN and store it in gridRows
+for (i = 0; i < gridRowColSize; i++) {
+    const columnFromGrid = [];
+    x = 0;
+    for (j = 0; j < gridRowColSize; j++) {
+        columnFromGrid.push(gridTiles[i + x]);
+        x += gridRowColSize;
+    }
+    gridColumns.push(columnFromGrid);
+}
+
+//Function to add delays in For.. loops. Loop must be inside an async function
 function delay(ms) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve("");
+            resolve();
         }, ms);
     });
 }
 
-async function getRandomCheckboardIndex(string) {
+//Get random x & y position in the grid and types out the menu indicator
+async function getRandomGridIndex(string) {
     const wordLength = string.length;
     const randRow = Math.floor(Math.random() * 8);
-    const randColumn = Math.floor(Math.random() * (8 - wordLength));
-    const row = tilesRowArray[randRow];
+    const randColumn = Math.floor(Math.random() * (8 - wordLength)); //Make sure the menu indicator won't overflow
+    const row = gridRows[randRow];
     for (i = 0; i < wordLength; i++) {
         let startIndex = row[randColumn + i];
-        startIndex.classList.add("selected");
-        await delay(70);
-        startIndex.innerHTML = string[i];
+        startIndex.classList.toggle("flipped");
+        startIndex.children[0].children[0].innerHTML = string[i];
+        await delay(80);
     }
 }
 
 // Actual function to scramble the text.
 function scrambleText(speed, duration, string) {
     let iterations = 0;
-    let intervalID = window.setInterval(() => {
-        letterTiles.forEach((tile) => {
+    let intervalID = setInterval(() => {
+        gridTiles.forEach((tile) => {
             tile.innerHTML =
                 characters[Math.floor(Math.random() * characters.length)];
         });
         if (++iterations === duration) {
-            getRandomCheckboardIndex(string);
+            getRandomGridIndex(string);
             window.clearInterval(intervalID);
         }
     }, speed);
 }
 
-scrambleText(50, 15, "HOME");
+// scrambleText(50, 15, "HOME");
 
 /* Navigation
 0 = Home
@@ -108,7 +125,7 @@ const navButtons = document.querySelector("nav").childNodes;
 
 navButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        let indexOfClickedButton = [].indexOf.call(
+        const indexOfClickedButton = [].indexOf.call(
             e.target.parentNode.children,
             e.target
         );
