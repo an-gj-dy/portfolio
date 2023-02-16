@@ -34,7 +34,7 @@
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
-    --clr-accent: #0099fa;
+    --clr-accent: hsl(4, 87%, 66%);
     --clr-accent-offset: hsl(175, 100%, 33%);
 
     --main-font: "Source Sans Pro", sans-serif;
@@ -131,11 +131,22 @@ section {
 }
 
 .welcome {
-    grid-area: 5 / 2 / span 1 / span 1;
+    grid-area: 5 / 2 / span 1 / span 4;
+    align-self: flex-end;
+    font-weight: 700;
 }
 
 .welcome--accent {
     color: var(--clr-accent);
+}
+
+.heading {
+    margin: 2rem 0;
+    font-family: var(--secondary-font);
+    grid-area: 6 / 2 / span 1 / span 10;
+    font-size: 5vw;
+    font-weight: 300;
+    font-style: italic;
 }
 
 .about-me {
@@ -151,7 +162,7 @@ section {
 }
 
 .about-me__paragraph--highlighted {
-    font-weight: 700;
+    font-weight: 500;
     color: var(--clr-accent);
 }
 
