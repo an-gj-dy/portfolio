@@ -13,41 +13,42 @@
 <body>
     <main>
         <div class="main-wrapper">
+            <header>
+                <nav class="navbar" aria-label="primary class">
+                    <span class="navbar__item">HOME</span><span class="navbar__item">PROJECTS</span><a
+                        class="navbar__item">CONTACT</a>
+                </nav>
+            </header>
             <section class="home">
-
-                <div class="home-wrapper">
-                    <nav aria-label="primary">
-                        <span class="nav-item">HOME</span><span class="nav-item"
-                            onclick="getRandomGridIndex('PROJECTS')">PROJECTS</span><a class="nav-item">CONTACT</a>
-                    </nav>
-                    <div class="home-grid">
-                    </div>
+                <h1 class="welcome">Welcome</h1>
+                <article class="about-me">
+                    <h2 class="about-me__heading">About me</h2>
+                    <p class="about-me__paragraph">I'm a <span class="about-me__paragraph--highlighted">Front End
+                            developer</span> in the making currently employed as a Team
+                        Lead. Alongside my day-job I study <span class="about-me__paragraph--highlighted">HTML, CSS and
+                            JavaScript</span> (with frameworks in the scope). I've
+                        always been drawn to using my creativity and want to explore how far it can take me. Consider
+                        this the start of my portfolio.</p>
+                </article>
+                <div class="portrait">
+                    <div class="portrait--overlay"></div>
+                    <img class="portrait__image" src="./assets/img/ante-dybedahl-profile-picture.png"
+                        alt="A photograph of the author">
                 </div>
             </section>
             <section class="projects">
-                <ul class="projects-carousel-container">
-                    <li class="projects-carousel-card">Project 1</li>
-                    <li class="projects-carousel-card">Project 2</li>
+                <ul class="carousel">
+                    <li class="carousel__card">Project 1</li>
+                    <li class="carousel__card">Project 2</li>
                 </ul>
-                <div class="projects-carousel-dots">
-                    <button class="projects-carousel-dot"></button>
-                    <button class="projects-carousel-dot"></button>
+                <div class="carousel__dots">
+                    <button class="carousel__dot"></button>
+                    <button class="carousel__dot"></button>
                 </div>
         </div>
         </section>
         </div>
     </main>
-    <template>
-        <div class="tile-container">
-            <div class="tile-content">
-                <div class="tile front">
-                </div>
-                <div class="tile back">
-                </div>
-            </div>
-        </div>
-
-    </template>
 </body>
 
 </html>
