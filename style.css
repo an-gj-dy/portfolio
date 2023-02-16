@@ -29,13 +29,13 @@
 }
 
 :root {
-    --clr-bg: hsl(212, 32%, 8%);
+    --clr-bg: #0e141b;
     --clr-bg-offset: hsl(240, 1%, 15%);
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
-    --clr-primary: hsl(347, 100%, 66%);
-    --clr-primary-offset: hsl(347, 100%, 58%);
+    --clr-primary: hsl(175, 100%, 39%);
+    --clr-primary-offset: hsl(175, 100%, 33%);
 
     --main-font: "Source Sans Pro", sans-serif;
     --secondary-font: "Source Serif Pro", serif;
