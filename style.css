@@ -141,7 +141,7 @@ section {
 }
 
 .heading {
-    margin: 2rem 0;
+    margin: 4rem 0;
     font-family: var(--secondary-font);
     grid-area: 6 / 2 / span 1 / span 10;
     font-size: 5vw;
@@ -149,32 +149,55 @@ section {
     font-style: italic;
 }
 
-.about-me {
-    grid-area: 7 / 2 / 9 / span 4;
+.skills {
+    --border-style: 5px solid var(--clr-accent);
+    position: relative;
+    grid-area: 7 / 8 / span 2 / span 5;
+    background: var(--clr-bg);
 }
 
-.about-me__paragraph {
-    font-style: italic;
-}
-
-.about-me__heading {
-    line-height: 160%;
-}
-
-.about-me__paragraph--highlighted {
-    font-weight: 500;
-    color: var(--clr-accent);
-}
-
-.portrait {
-    grid-area: 4 / 8 / 10 / span 4;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.portrait__image {
-    filter: grayscale(0.4);
+.skills__container {
+    display: flex;
     width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.skills::before,
+.skills::after {
+    position: absolute;
+    content: "";
+    height: 30%;
+    aspect-ratio: 1/1;
+    background: transparent;
+}
+
+.skills::before {
+    border-top: var(--border-style);
+    border-left: var(--border-style);
+}
+
+.skills::after {
+    border-bottom: var(--border-style);
+    border-right: var(--border-style);
+    right: 0;
+    bottom: 0;
+}
+
+.skills__icon--html:hover {
+    fill: #e34c26;
+    stroke: #ebebeb;
+}
+
+.skills__icon--css:hover {
+    fill: #264de4;
+    stroke: #ebebeb;
+}
+
+.skills__icon--javascript:hover {
+    fill: #f0db4f;
+    stroke: #ebebeb;
 }
 
 /* 
@@ -262,4 +285,5 @@ header {
     cursor: pointer;
     margin: 2rem 0;
     font-weight: 700;
+    text-transform: lowercase;
 }
