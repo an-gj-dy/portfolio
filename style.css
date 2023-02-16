@@ -34,8 +34,8 @@
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
-    --clr-primary: hsl(175, 100%, 39%);
-    --clr-primary-offset: hsl(175, 100%, 33%);
+    --clr-accent: #0099fa;
+    --clr-accent-offset: hsl(175, 100%, 33%);
 
     --main-font: "Source Sans Pro", sans-serif;
     --secondary-font: "Source Serif Pro", serif;
@@ -134,6 +134,10 @@ section {
     grid-area: 5 / 2 / span 1 / span 1;
 }
 
+.welcome--accent {
+    color: var(--clr-accent);
+}
+
 .about-me {
     grid-area: 7 / 2 / 9 / span 4;
 }
@@ -209,7 +213,7 @@ section {
 
 .carousel__dot {
     display: inline-block;
-    background: var(--clr-4);
+    background: var(--clr-text-offset);
     border-radius: 100px;
     width: 20px;
     height: 8px;
@@ -221,7 +225,7 @@ section {
 .carousel__dot--selected {
     width: 40px;
     height: 10px;
-    background: var(--clr-5);
+    background: var(--clr-text);
 }
 
 /* 
