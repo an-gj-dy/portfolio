@@ -27,11 +27,17 @@
 }
 
 :root {
-    --fnt-clr-light: hsl(0, 0%, 100%);
-    --fnt-clr-dark: hsl(0, 0%, 0%);
-    --gradient-overlay: linear-gradient(0deg, #00000088 30%, #ffffff44, 100%);
-    --border-width: 8px;
-    --portrait-width: 20vw;
+    --clr-1: hsl(211, 53%, 11%);
+    --clr-2: hsl(219, 37%, 17%);
+    --clr-3: hsl(212, 29%, 36%);
+    --clr-4: hsl(214, 23%, 56%);
+    --clr-5: hsl(214, 23%, 86%);
+    --clr-bg-gradient: linear-gradient(
+        45deg,
+        var(--clr-1) 0%,
+        var(--clr-2) 50%,
+        var(--clr-3) 100%
+    );
     --header-font: "Oswald", sans-serif;
     --body-font: "PT Mono", serif;
 }
@@ -40,6 +46,7 @@ html,
 body {
     height: 100%;
     scroll-behavior: smooth;
+    background: var(--clr-1);
 }
 
 /* 
@@ -84,6 +91,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+    background: var(--clr-bg-gradient);
 }
 
 .main-wrapper {
@@ -91,7 +99,7 @@ main {
 }
 
 section {
-    background: #fff;
+    background: inherit;
     width: 100%;
 }
 
@@ -173,12 +181,12 @@ Styling for the menu indicator grid
     width: 100%;
     background: white;
     backface-visibility: hidden;
-    color: black;
+    color: var(--clr-lightest);
 }
 
 .back {
     background: black;
-    color: white;
+    color: var(--clr-lightest);
     transform: rotateX(180deg);
 }
 
@@ -221,16 +229,17 @@ Styling for the menu indicator grid
 .projects-carousel-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     width: 100%;
 }
 
 .projects-carousel-dot {
     display: inline-block;
-    background: hsl(0, 0%, 70%);
+    background: var(--clr-4);
     border-radius: 100px;
     width: 20px;
-    height: 10px;
+    height: 8px;
     transition: 400ms;
     border: none;
     cursor: pointer;
@@ -238,7 +247,8 @@ Styling for the menu indicator grid
 
 .projects-carousel-dot.selected {
     width: 40px;
-    background: hsl(0, 0%, 50%);
+    height: 10px;
+    background: var(--clr-5);
 }
 
 /* 
@@ -252,9 +262,11 @@ nav {
     justify-content: space-around;
     align-items: center;
     font-family: var(--body-font);
+    color: var(--clr-5);
 }
 
 nav > * {
     cursor: pointer;
     margin: 1rem 0;
+    color: var(--clr-5);
 }
