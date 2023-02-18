@@ -27,6 +27,7 @@ navButtons.forEach((button) => {
             e.target.parentNode.children,
             e.target
         );
+        console.log(indexOfClickedButton);
     });
 });
 
