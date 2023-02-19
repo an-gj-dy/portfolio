@@ -181,6 +181,7 @@ li {
     cursor: pointer;
     text-transform: lowercase;
     user-select: none;
+    z-index: 1;
 }
 
 .about__nav--separator {
@@ -190,28 +191,58 @@ li {
 }
 
 .about__nav-item::after {
+    transition: 0.5s ease;
+    transform-origin: center;
     content: "";
     position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 10px;
-    left: 0;
-    background-color: var(--clr-accent);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+    background: var(--clr-accent-offset);
+    z-index: -1;
+    left: -0.3em;
+    top: 0.8em;
+    height: 0.4em;
+    width: 0%;
 }
 
 .about__nav-item:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+    width: 100%;
+    transform-origin: center;
 }
 
 .about__nav-item--selected {
+    transition: 0.5s ease;
+    transform: translateY(-20%);
+}
+
+.about__nav-item--selected::after {
+    transition: 0.5s ease;
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    background: var(--clr-accent-offset);
+    z-index: -1;
+    left: -0.3em;
+    top: 0.8em;
+    height: 0.4em;
+    width: 100%;
 }
 
 .about__container {
     grid-area: 2 / 1 / span 1 / span 4;
+    position: relative;
+    display: flex;
+    height: 80%;
+    width: 100%;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+}
+
+.about__content {
+    height: 100%;
+    width: 100%;
+    background: red;
+    margin-right: 5px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 /* 

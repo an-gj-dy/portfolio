@@ -14,20 +14,26 @@ Header Menu Indicator
 */
 
 /* Navigation
-0 = Home
-1 = Projects
-3 = Contact
+0 = About me
+1 = Skills
+2 = Projects
 */
 
-const navButtons = document.querySelector(".about__nav").childNodes;
+const navBtns = [...document.querySelectorAll(".about__nav-item")];
+const aboutContent = [...document.querySelectorAll(".about__content")];
 
-navButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const indexOfClickedButton = [].indexOf.call(
-            e.target.parentNode.children,
-            e.target
-        );
-        console.log(indexOfClickedButton);
+navBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        const target = e.target;
+        const index = navBtns.indexOf(target);
+        console.log(index);
+        const selector = `.about__content:nth-child(${index + 1})`;
+        const content = document.querySelector(selector);
+        content.scrollIntoView({
+            behavior: "smooth",
+            inline: "start",
+            block: "nearest",
+        });
     });
 });
 
