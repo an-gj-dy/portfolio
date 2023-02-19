@@ -24,11 +24,16 @@
             <section class="home">
                 <h2 class="name name--accent">ANTE DYBEDAHL</h2>
                 <h1 class="heading">Aspiring web developer</h1>
-                <nav class="about">
-                    <article class="about__container about__container--me"></article>
-                    <article class="about__container about__container--skills"></article>
-                    <article class="about__container about__container--projects"></article>
-                </nav>
+                <div class="about about--grid">
+                    <nav class="about__nav"><span class="about__nav-item about__nav-item--me">About me</span><span
+                            class="about__nav-item about__nav-item--skills">Skills</span><span
+                            class="about__nav-item about__nav-item--projects">Projects</span></nav>
+                    <div class="about__container">
+                        <article class="about__content about__content--me"></article>
+                        <article class="about__content about__content--skills"></article>
+                        <article class="about__content about__content--projects"></article>
+                    </div>
+                </div>
             </section>
             <section class="projects">
                 <ul class="carousel">

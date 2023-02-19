@@ -55,6 +55,22 @@ body {
     background: var(--clr-bg-gradient);
 }
 
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--clr-bg-gradient);
+}
+
+.main-wrapper {
+    width: 70%;
+    position: relative;
+}
+
+section {
+    width: 100%;
+}
+
 /* 
 ############################
 2. Typography
@@ -100,31 +116,20 @@ p {
     color: var(--clr-text);
 }
 
-/* 
-############################
-3. Layout
-############################
-*/
-
-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: var(--clr-bg-gradient);
+.heading {
+    font-family: var(--secondary-font);
+    font-size: clamp(4rem, 5vw, 10rem);
+    font-weight: 300;
+    font-style: italic;
 }
 
-.main-wrapper {
-    width: 70%;
-    position: relative;
-}
-
-section {
-    width: 100%;
+.name--accent {
+    color: var(--clr-accent);
 }
 
 /* 
 ############################
-3.1 Home Page 
+3. Grid Layout
 ############################
 */
 
@@ -136,22 +141,13 @@ section {
 }
 
 .name {
-    grid-area: 4 / 2 / span 1 / span 4;
+    grid-area: 4 / 2 / span 1 / span 3;
     align-self: flex-end;
-    font-weight: 700;
-}
-
-.name--accent {
-    color: var(--clr-accent);
 }
 
 .heading {
-    margin: 4rem 0;
-    font-family: var(--secondary-font);
     grid-area: 5 / 2 / span 1 / span 10;
-    font-size: clamp(4rem, 5vw, 10rem);
-    font-weight: 300;
-    font-style: italic;
+    margin: 4rem 0;
 }
 
 .about {
@@ -160,7 +156,47 @@ section {
 
 /* 
 ############################
-3.2 Projects page
+4. About Block 
+############################
+*/
+
+.about--grid {
+    --about-border: 2px solid white;
+    display: grid;
+    position: relative;
+    grid-template: 1fr 7fr / repeat(3, 1fr) 4fr;
+}
+
+.about__nav {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-area: 1 / 1 / span 1 / span 3;
+    align-items: center;
+}
+
+.about__nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-top: var(--about-border);
+    border-left: var(--about-border);
+    border-right: var(--about-border);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.about__nav-item--selected {
+}
+
+.about__container {
+    grid-area: 2 / 1 / span 1 / span 4;
+}
+
+/* 
+############################
+5. ??
 ############################
 */
 
@@ -222,7 +258,7 @@ section {
 
 /* 
 ############################
-4. Header & Navigation
+6. ???
 ############################
 */
 
