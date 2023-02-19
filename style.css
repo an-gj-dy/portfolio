@@ -29,13 +29,18 @@
 }
 
 :root {
-    --clr-bg: #0e141b;
+    --clr-bg: hsl(212, 32%, 8%);
     --clr-bg-offset: hsl(240, 1%, 15%);
+    --clr-bg-gradient: linear-gradient(
+        45deg,
+        hsl(212, 32%, 8%) 0%,
+        hsl(240, 1%, 15%) 100%
+    );
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
     --clr-accent: hsl(4, 87%, 66%);
-    --clr-accent-offset: hsl(175, 100%, 33%);
+    --clr-accent-offset: hsl(4, 87%, 72%);
 
     --main-font: "Source Sans Pro", sans-serif;
     --secondary-font: "Source Serif Pro", serif;
@@ -47,7 +52,7 @@ body {
 }
 
 body {
-    background: var(--clr-bg);
+    background: var(--clr-bg-gradient);
 }
 
 /* 
@@ -105,7 +110,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    /* background: var(--clr-bg-gradient); */
+    background: var(--clr-bg-gradient);
 }
 
 .main-wrapper {
@@ -147,6 +152,10 @@ section {
     font-size: clamp(4rem, 5vw, 10rem);
     font-weight: 300;
     font-style: italic;
+}
+
+.about {
+    grid-area: 6 / 7 / span 4 / span 5;
 }
 
 /* 
