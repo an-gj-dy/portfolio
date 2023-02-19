@@ -19,7 +19,7 @@ Header Menu Indicator
 3 = Contact
 */
 
-const navButtons = document.querySelector("nav").childNodes;
+const navButtons = document.querySelector(".about__nav").childNodes;
 
 navButtons.forEach((button) => {
     button.addEventListener("click", (e) => {

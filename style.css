@@ -111,7 +111,8 @@ h5,
 h6,
 span,
 a,
-p {
+p,
+li {
     font-family: var(--main-font);
     color: var(--clr-text);
 }
@@ -164,27 +165,46 @@ p {
     --about-border: 2px solid white;
     display: grid;
     position: relative;
-    grid-template: 1fr 7fr / repeat(3, 1fr) 4fr;
+    grid-template-rows: 1fr 7fr;
 }
 
 .about__nav {
-    display: grid;
     height: 100%;
-    grid-template-columns: repeat(3, 1fr);
     grid-area: 1 / 1 / span 1 / span 3;
-    align-items: center;
+    list-style-type: none;
 }
 
 .about__nav-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    position: relative;
     height: 100%;
-    border-top: var(--about-border);
-    border-left: var(--about-border);
-    border-right: var(--about-border);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    cursor: pointer;
+    text-transform: lowercase;
+    user-select: none;
+}
+
+.about__nav--separator {
+    display: inline-block;
+    margin: 0 1.5rem;
+    user-select: none;
+}
+
+.about__nav-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 10px;
+    left: 0;
+    background-color: var(--clr-accent);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.about__nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .about__nav-item--selected {
