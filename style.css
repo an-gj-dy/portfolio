@@ -39,8 +39,8 @@
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
-    --clr-accent: hsl(4, 87%, 66%);
-    --clr-accent-offset: hsl(4, 87%, 72%);
+    --clr-accent: #f4675d;
+    --clr-accent-offset: hsl(4, 87%, 82%);
 
     --main-font: "Source Sans Pro", sans-serif;
     --secondary-font: "Source Serif Pro", serif;
@@ -122,7 +122,8 @@ h6,
 span,
 a,
 p,
-li {
+li,
+button {
     font-family: var(--main-font);
     color: var(--clr-text);
 }
@@ -149,6 +150,10 @@ li {
     height: 100svh;
     display: grid;
     grid-template: repeat(12, 1fr) / repeat(12, 1fr);
+}
+
+.contact {
+    grid-area: 1 / 10 / span 2 / span 2;
 }
 
 .name {
@@ -257,17 +262,9 @@ li {
 
 /* 
 ############################
-5. ??
+5. Projects Carousel
 ############################
 */
-
-.projects {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: 50vh;
-    grid-template-rows: 2fr 1fr;
-}
 
 .carousel::-webkit-scrollbar {
     display: none;
@@ -319,26 +316,49 @@ li {
 
 /* 
 ############################
-6. ???
+5. Contact
 ############################
 */
 
-header {
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.navbar__item {
-    cursor: pointer;
-    margin: 2rem 0;
+.contact--style {
+    padding: 1em 2em;
+    width: fit-content;
+    text-transform: uppercase;
     font-weight: 700;
-    text-transform: lowercase;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--clr-text);
+    border: 2px solid var(--clr-accent);
+    cursor: pointer;
+    align-self: center;
+    justify-self: end;
+    transition: all 0.1s;
+    transform-origin: center;
+}
+
+.contact--style:active {
+    background-color: #f4675d;
+    transform: scale(0.9);
+    border-radius: 6px;
+}
+
+.contact--cta {
+    animation: pulse 20s ease-in infinite reverse;
+    box-shadow: 0 0 0 0 var(--clr-accent);
+}
+
+.contact--hover {
+    background-color: #f4675d;
+    transform: scale(0.95);
+    border-radius: 6px;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 1rem transparent;
+    }
+    5%,
+    100% {
+        box-shadow: 0 0 0 0 var(--clr-accent);
+    }
 }

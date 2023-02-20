@@ -89,3 +89,21 @@ carouselItems.forEach((item, index) => {
     item.sibling = index;
     carouselObserver.observe(item);
 }); // Attach observer to Projects carousel
+
+/* 
+################
+Contact button
+################
+*/
+
+const contactButton = document.querySelector(".contact");
+
+contactButton.addEventListener("mouseover", () => {
+    contactButton.classList.remove("contact--cta");
+    contactButton.classList.add("contact--hover");
+});
+
+contactButton.addEventListener("mouseleave", () => {
+    contactButton.classList.add("contact--cta");
+    contactButton.classList.remove("contact--hover");
+});
