@@ -1,3 +1,5 @@
+import IntersectionObserver from "IntersectionObserver";
+
 //Function to add delays in For.. loops. Loop must be inside an async function
 function delay(ms) {
     return new Promise((resolve) => {
