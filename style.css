@@ -180,14 +180,19 @@ li {
     height: 100%;
     cursor: pointer;
     text-transform: lowercase;
+    text-shadow: -1px 1px var(--clr-bg);
     user-select: none;
     z-index: 1;
 }
 
-.about__nav--separator {
-    display: inline-block;
-    margin: 0 1.5rem;
-    user-select: none;
+.about__nav-item + .about__nav-item::before {
+    position: absolute;
+    content: "/";
+    left: -1rem;
+}
+
+.about__nav-item + .about__nav-item {
+    margin-left: 1.5rem;
 }
 
 .about__nav-item::after {
@@ -195,7 +200,7 @@ li {
     transform-origin: center;
     content: "";
     position: absolute;
-    background: var(--clr-accent-offset);
+    background: var(--clr-accent);
     z-index: -1;
     left: -0.3em;
     top: 0.8em;
@@ -208,17 +213,17 @@ li {
     transform-origin: center;
 }
 
-.about__nav-item--selected {
+.about__nav-item.in-view {
     transition: 0.5s ease;
     transform: translateY(-20%);
 }
 
-.about__nav-item--selected::after {
+.about__nav-item.in-view::after {
     transition: 0.5s ease;
     transform-origin: center;
     content: "";
     position: absolute;
-    background: var(--clr-accent-offset);
+    background: var(--clr-accent);
     z-index: -1;
     left: -0.3em;
     top: 0.8em;
@@ -301,7 +306,7 @@ li {
     cursor: pointer;
 }
 
-.carousel__dot--selected {
+.carousel__dot.in-view {
     width: 40px;
     height: 10px;
     background: var(--clr-text);

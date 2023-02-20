@@ -7,83 +7,74 @@ function delay(ms) {
     });
 }
 
-/* 
-###############################
-Header Menu Indicator
-###############################
-*/
+const scrollOptions = {
+    behavior: "smooth",
+    inline: "start",
+    block: "nearest",
+};
 
-/* Navigation
-0 = About me
-1 = Skills
-2 = Projects
-*/
+function scroller() {
+    const index = [...this.parentElement.children].indexOf(this);
+    const aunt = this.parentElement.nextElementSibling;
+    const uncle = this.parentElement.previousElementSibling;
 
+    if (aunt != null) {
+        const auntCousins = [...aunt.children];
+        auntCousins[index].scrollIntoView(scrollOptions);
+    } else {
+        const uncleCousins = [...uncle.children];
+        uncleCousins[index].scrollIntoView(scrollOptions);
+    }
+}
+
+function changeIndication(entries) {
+    entries.forEach((entry) => {
+        const target = entry.target;
+        const index = target.sibling;
+        const aunt = target.parentElement.nextElementSibling;
+        const uncle = target.parentElement.previousElementSibling;
+        if (aunt != null) {
+            const auntCousins = [...aunt.children];
+            entry.isIntersecting
+                ? auntCousins[index].classList.add("in-view")
+                : auntCousins[index].classList.remove("in-view");
+        } else {
+            const uncleCousins = [...uncle.children];
+            entry.isIntersecting
+                ? uncleCousins[index].classList.add("in-view")
+                : uncleCousins[index].classList.remove("in-view");
+        }
+    });
+}
+
+// About block scroll functionality
 const navBtns = [...document.querySelectorAll(".about__nav-item")];
 const aboutContent = [...document.querySelectorAll(".about__content")];
 
 navBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-        const target = e.target;
-        const index = navBtns.indexOf(target);
-        console.log(index);
-        const selector = `.about__content:nth-child(${index + 1})`;
-        const content = document.querySelector(selector);
-        content.scrollIntoView({
-            behavior: "smooth",
-            inline: "start",
-            block: "nearest",
-        });
-    });
+    btn.addEventListener("click", scroller);
 });
 
-/* 
-###############################
-Projects Carousel Functionality
-###############################
-*/
+const aboutObserver = new IntersectionObserver(changeIndication, {
+    threshold: 0.95,
+}); // Create observer for About block
+aboutContent.forEach((item, index) => {
+    item.sibling = index;
+    aboutObserver.observe(item);
+}); // Attach observer to About block
 
-// Variables
-const carouselItems = Array.from(document.querySelector(".carousel").children);
-const dots = document.querySelector(".carousel__dots");
+// Projects scroll functionality
+const carouselItems = [...document.querySelector(".carousel").children];
+const carouselDots = [...document.querySelectorAll(".carousel__dot")];
 
-// Makes dots clickable and scroll to corresponding projects card
-dots.addEventListener("click", (e) => {
-    const target = e.target;
-    if (!target.matches(".carousel__dot")) {
-        return;
-    }
-    const index = Array.from(dots.children).indexOf(target);
-    const selector = `.carousel__card:nth-child(${index + 1})`;
-    const card = document.querySelector(selector);
-    card.scrollIntoView({
-        behavior: "smooth",
-        inline: "start",
-        block: "nearest",
-    });
+carouselDots.forEach((dot) => {
+    dot.addEventListener("click", scroller);
 });
 
-// Observer to check which projects card is in view and highlights corresponding dot
-const carouselObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            const target = entry.target;
-            const index = carouselItems.indexOf(target);
-            const selector = `.carousel__dot:nth-child(${index + 1})`;
-            const dot = document.querySelector(selector);
-            if (entry.isIntersecting) {
-                dot.classList.add("carousel__dot--selected");
-            } else {
-                dot.classList.remove("carousel__dot--selected");
-            }
-        });
-    },
-    {
-        threshold: 0.55, // How much of the next image should be visible before animation start (1=100%, 0=0%)
-    }
-);
-
-// Add observer to each projects card
-carouselItems.forEach((item) => {
+const carouselObserver = new IntersectionObserver(changeIndication, {
+    threshold: 0.55,
+}); // Create observer for Projects carousel
+carouselItems.forEach((item, index) => {
+    item.sibling = index;
     carouselObserver.observe(item);
-});
+}); // Attach observer to Projects carousel
