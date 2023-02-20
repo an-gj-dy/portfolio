@@ -7,6 +7,16 @@ function delay(ms) {
     });
 }
 
+//Mouse tracking background effect
+const background = document.querySelector("main");
+background.addEventListener("mousemove", (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    background.style.setProperty("--x-coord", `${x}px`);
+    background.style.setProperty("--y-coord", `${y}px`);
+});
+
+// Make indicator buttons scroll to corresponding element
 function scroller() {
     const index = [...this.parentElement.children].indexOf(this);
     const aunt = this.parentElement.nextElementSibling;
