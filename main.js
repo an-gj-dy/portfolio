@@ -75,8 +75,8 @@ aboutContent.forEach((item, index) => {
 }); // Attach observer to About block
 
 // Projects scroll functionality
-const carouselItems = [...document.querySelector(".carousel").children];
-const carouselDots = [...document.querySelectorAll(".carousel__dot")];
+const carouselItems = [...document.querySelector(".project").children];
+const carouselDots = [...document.querySelectorAll(".project__dot")];
 
 carouselDots.forEach((dot) => {
     dot.addEventListener("click", scroller);
