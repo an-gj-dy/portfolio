@@ -7,17 +7,15 @@ function delay(ms) {
     });
 }
 
-const scrollOptions = {
-    behavior: "smooth",
-    inline: "start",
-    block: "nearest",
-};
-
 function scroller() {
     const index = [...this.parentElement.children].indexOf(this);
     const aunt = this.parentElement.nextElementSibling;
     const uncle = this.parentElement.previousElementSibling;
-
+    const scrollOptions = {
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest",
+    };
     if (aunt != null) {
         const auntCousins = [...aunt.children];
         auntCousins[index].scrollIntoView(scrollOptions);
@@ -36,13 +34,13 @@ function changeIndication(entries) {
         if (aunt != null) {
             const auntCousins = [...aunt.children];
             entry.isIntersecting
-                ? auntCousins[index].classList.add("in-view")
-                : auntCousins[index].classList.remove("in-view");
+                ? auntCousins[index].classList.add("active")
+                : auntCousins[index].classList.remove("active");
         } else {
             const uncleCousins = [...uncle.children];
             entry.isIntersecting
-                ? uncleCousins[index].classList.add("in-view")
-                : uncleCousins[index].classList.remove("in-view");
+                ? uncleCousins[index].classList.add("active")
+                : uncleCousins[index].classList.remove("active");
         }
     });
 }
@@ -53,6 +51,9 @@ const aboutContent = [...document.querySelectorAll(".about__content")];
 
 navBtns.forEach((btn) => {
     btn.addEventListener("click", scroller);
+    btn.addEventListener("click", () => {
+        btn.classList.add("active");
+    });
 });
 
 const aboutObserver = new IntersectionObserver(changeIndication, {
