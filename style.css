@@ -36,11 +36,6 @@
         var(--clr-bg-offset),
         var(--clr-bg) 100%
     );
-    --clr-bg-animated-gradient: radial-gradient(
-        circle at 500px 500px,
-        var(--clr-bg-offset),
-        var(--clr-bg) 100%
-    );
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
@@ -60,7 +55,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: var(--clr-bg-gradient);
+    background: var(--clr-bg-gradient); /* Fallback */
 }
 
 main::before {
@@ -68,6 +63,7 @@ main::before {
     position: absolute;
     width: 100%;
     height: 100%;
+    background: var(--clr-bg-gradient); /* Fallback */
     background: radial-gradient(
         circle at var(--x-coord) var(--y-coord),
         var(--clr-bg-offset),
