@@ -1,104 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="main.js" defer></script>
-        <title>Portfolio</title>
-    </head>
 
-    <body>
-        <main>
-            <div class="main-wrapper">
-                <section class="home">
-                    <div class="home-wrapper">
-                        <div class="home-letters-checkboard">
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <nav aria-label="primary">
-                            <span class="nav-item">HOME</span
-                            ><span class="nav-item">PROJECTS</span
-                            ><a class="nav-item">CONTACT</a>
-                        </nav>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <main>
+        <div class="main-wrapper">
+            <header>
+                <button class="contact">contact</button>
+            </header>
+            <section class="home">
+                <h2 class="name name--accent">ANTE DYBEDAHL</h2>
+                <h1 class="heading">Aspiring web developer</h1>
+                <div class="about about--grid">
+                    <menu class="about__nav">
+                        <li class="about__nav-item about__nav-item--me about__nav-item--selected">About me</li>
+                        <li class="about__nav-item about__nav-item--skills">Skills</li>
+                        <li class="about__nav-item about__nav-item--projects">Projects</li>
+                    </menu>
+                    <div class="about__container">
+                        <article class="about__content about__content--me">About me</article>
+                        <article class="about__content about__content--skills">Skills</article>
+                        <article class="about__content about__content--projects">
+                            <ul class="carousel">
+                                <li class="carousel__card">Project 1</li>
+                                <li class="carousel__card">Project 2</li>
+                            </ul>
+                            <div class="carousel__dots">
+                                <button class="carousel__dot"></button>
+                                <button class="carousel__dot"></button>
+                            </div>
+                        </article>
                     </div>
-                </section>
-                <section class="projects">
-                        <ul class="projects-carousel-container">
-                            <li class="projects-carousel-card">Project 1</li>
-                            <li class="projects-carousel-card">Project 2</li>
-                        </ul>
-                        <div class="projects-carousel-dots">
-                            <button class="projects-carousel-dot"></button>
-                            <button class="projects-carousel-dot"></button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </body>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
 </html>
