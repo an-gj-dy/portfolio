@@ -152,7 +152,7 @@ li {
 }
 
 .about {
-    grid-area: 6 / 7 / span 4 / span 5;
+    grid-area: 6 / 2 / span 7 / span 10;
 }
 
 /* 
@@ -188,11 +188,11 @@ li {
 .about__nav-item + .about__nav-item::before {
     position: absolute;
     content: "/";
-    left: -1rem;
+    left: -1.75rem;
 }
 
 .about__nav-item + .about__nav-item {
-    margin-left: 1.5rem;
+    margin-left: 3rem;
 }
 
 .about__nav-item::after {
@@ -213,12 +213,7 @@ li {
     transform-origin: center;
 }
 
-.about__nav-item.in-view {
-    transition: 0.5s ease;
-    transform: translateY(-20%);
-}
-
-.about__nav-item.in-view::after {
+.about__nav-item.active::after {
     transition: 0.5s ease;
     transform-origin: center;
     content: "";
@@ -239,12 +234,12 @@ li {
     width: 100%;
     overflow: hidden;
     scroll-snap-type: x mandatory;
+    z-index: 1;
 }
 
 .about__content {
     height: 100%;
     width: 100%;
-    background: red;
     margin-right: 5px;
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -306,7 +301,7 @@ li {
     cursor: pointer;
 }
 
-.carousel__dot.in-view {
+.carousel__dot.active {
     width: 40px;
     height: 10px;
     background: var(--clr-text);

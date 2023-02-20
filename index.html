@@ -14,12 +14,7 @@
     <main>
         <div class="main-wrapper">
             <header>
-                <nav class="navbar" aria-label="primary class">
-                    <span class="navbar__item navbar__item--home">home</span><span
-                        class="navbar__item navbar__item--projects">projects</span><span
-                        class="navbar__item navbar__item--skills">skills</span><a
-                        class="navbar__item navbar__item--contact">contact</a>
-                </nav>
+                <button class="contact">contact</button>
             </header>
             <section class="home">
                 <h2 class="name name--accent">ANTE DYBEDAHL</h2>
@@ -33,21 +28,19 @@
                     <div class="about__container">
                         <article class="about__content about__content--me">About me</article>
                         <article class="about__content about__content--skills">Skills</article>
-                        <article class="about__content about__content--projects">Projects</article>
+                        <article class="about__content about__content--projects">
+                            <ul class="carousel">
+                                <li class="carousel__card">Project 1</li>
+                                <li class="carousel__card">Project 2</li>
+                            </ul>
+                            <div class="carousel__dots">
+                                <button class="carousel__dot"></button>
+                                <button class="carousel__dot"></button>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
-            <section class="projects">
-                <ul class="carousel">
-                    <li class="carousel__card">Project 1</li>
-                    <li class="carousel__card">Project 2</li>
-                </ul>
-                <div class="carousel__dots">
-                    <button class="carousel__dot"></button>
-                    <button class="carousel__dot"></button>
-                </div>
-        </div>
-        </section>
         </div>
     </main>
 </body>
