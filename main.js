@@ -7,6 +7,7 @@ function delay(ms) {
     });
 }
 
+// Make indicator buttons scroll to corresponding element
 function scroller() {
     const index = [...this.parentElement.children].indexOf(this);
     const aunt = this.parentElement.nextElementSibling;
