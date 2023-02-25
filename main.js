@@ -92,7 +92,7 @@ carouselItems.forEach((item, index) => {
 
 /* 
 ################
-Contact button
+Contact buttons
 ################
 */
 
@@ -106,4 +106,15 @@ contactButton.addEventListener("mouseover", () => {
 contactButton.addEventListener("mouseleave", () => {
     contactButton.classList.add("contact--cta");
     contactButton.classList.remove("contact--hover");
+});
+
+const mailAddressButton = document.querySelector(".contact--email");
+
+mailAddressButton.addEventListener("click", () => {
+    mailAddressButton.classList.add("copied");
+    navigator.clipboard.writeText("ante.dybedahl@gmail.com");
+});
+
+mailAddressButton.addEventListener("animationend", () => {
+    mailAddressButton.classList.remove("copied");
 });

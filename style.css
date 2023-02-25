@@ -153,13 +153,13 @@ button {
     grid-template: repeat(12, 1fr) / repeat(12, 1fr);
 }
 
-.contact {
-    grid-area: 1 / 10 / span 2 / span 2;
+.name {
+    grid-area: 3 / 2 / span 1 / span 3;
+    align-self: flex-end;
 }
 
-.name {
+.skills-section {
     grid-area: 4 / 2 / span 1 / span 3;
-    align-self: flex-end;
 }
 
 .heading {
@@ -168,7 +168,7 @@ button {
 }
 
 .about {
-    grid-area: 6 / 2 / span 7 / span 10;
+    grid-area: 6 / 2 / span 7 / span 8;
 }
 
 /* 
@@ -327,11 +327,13 @@ button {
 }
 
 .project__card {
+    position: relative;
     height: 100%;
     width: 100%;
     margin-right: 5px;
     flex-shrink: 0;
     scroll-snap-align: start;
+    border-radius: 10px;
 }
 
 .project__dots {
@@ -349,7 +351,8 @@ button {
     border-radius: 100px;
     width: 20px;
     height: 8px;
-    transition: 400ms;
+    transition-property: width, height;
+    transition-duration: 0.5s;
     border: none;
     cursor: pointer;
 }
@@ -360,74 +363,18 @@ button {
     background: var(--clr-text);
 }
 
-/* 
-############################
-5. Contact
-############################
-*/
-
-/* 
-############################
-5.1 Contact Button
-############################
-*/
-
-.contact--style {
-    padding: 1em 2em;
-    width: fit-content;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1rem;
-    background: transparent;
-    color: var(--clr-text);
-    border: 2px solid var(--clr-accent);
-    border-radius: 10px;
-    cursor: pointer;
-    align-self: center;
-    justify-self: end;
-    transition: all 0.1s;
-    transform-origin: center;
-}
-
-.contact--style:active {
-    background-color: #f4675d;
-    transform: scale(0.9);
-}
-
-.contact--cta {
-    animation: pulse 20s ease-in infinite reverse;
-    box-shadow: 0 0 0 0 var(--clr-accent);
-}
-
-.contact--hover {
-    background-color: #f4675d;
-    transform: scale(0.95);
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 1rem transparent;
-    }
-    5%,
-    100% {
-        box-shadow: 0 0 0 0 var(--clr-accent);
-    }
-}
-
-/* 
-############################
-6. Project Cards
-############################
-*/
-
-.project--dahl-kvist {
+.wip::before {
+    content: "";
     width: 100%;
     height: 100%;
-    background: hsla(0, 0%, 100%, 0.2);
+    background: url(./assets/img/wip2.jpg) center;
+    background-size: cover;
+    position: absolute;
+    filter: blur(3px) grayscale(1);
 }
 
-.project--dahl-kvist::after {
-    content: "Under construction";
+.wip::after {
+    content: "Work in progress";
     position: absolute;
     aspect-ratio: 5/1;
     height: 30px;
@@ -438,4 +385,87 @@ button {
     color: black;
     right: 2rem;
     top: 0;
+}
+
+/* 
+############################
+5. Footer
+############################
+*/
+
+.contact {
+    position: fixed;
+    width: 100%;
+    height: fit-content;
+    bottom: 0;
+}
+
+.contact__container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact__container i {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid var(--clr-text-offset);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    transition-property: color, border-color, scale;
+    transition-duration: 0.5s;
+}
+
+.contact__container i:hover {
+    color: var(--clr-accent);
+    border-color: var(--clr-accent);
+    scale: 1.1;
+}
+
+.contact--email--tooltip {
+    position: absolute;
+    left: 50%;
+    translate: -50% -100%;
+    top: 0;
+    opacity: 0;
+    color: var(--clr-text-offset);
+    scale: 0.5;
+}
+
+.contact--email.copied .contact--email--tooltip {
+    animation-name: fadeInMoveUpFadeOut;
+    animation-duration: 600ms;
+}
+
+@keyframes fadeInMoveUpFadeOut {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-70%);
+        opacity: 0;
+        scale: 1;
+    }
+}
+
+/* 
+############################
+6. Font Awesome icons
+############################
+*/
+
+.fa-brands,
+.fa-regular {
+    color: var(--clr-text-offset);
+}
+
+.skills-section i {
+    font-size: 2rem;
+}
+
+.skills-section i + i {
+    margin-left: 1rem;
+    margin-top: 1rem;
 }
