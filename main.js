@@ -75,8 +75,8 @@ aboutContent.forEach((item, index) => {
 }); // Attach observer to About block
 
 // Projects scroll functionality
-const carouselItems = [...document.querySelector(".carousel").children];
-const carouselDots = [...document.querySelectorAll(".carousel__dot")];
+const carouselItems = [...document.querySelector(".project").children];
+const carouselDots = [...document.querySelectorAll(".project__dot")];
 
 carouselDots.forEach((dot) => {
     dot.addEventListener("click", scroller);
@@ -89,3 +89,32 @@ carouselItems.forEach((item, index) => {
     item.sibling = index;
     carouselObserver.observe(item);
 }); // Attach observer to Projects carousel
+
+/* 
+################
+Contact buttons
+################
+*/
+
+const contactButton = document.querySelector(".contact");
+
+contactButton.addEventListener("mouseover", () => {
+    contactButton.classList.remove("contact--cta");
+    contactButton.classList.add("contact--hover");
+});
+
+contactButton.addEventListener("mouseleave", () => {
+    contactButton.classList.add("contact--cta");
+    contactButton.classList.remove("contact--hover");
+});
+
+const mailAddressButton = document.querySelector(".contact--email");
+
+mailAddressButton.addEventListener("click", () => {
+    mailAddressButton.classList.add("copied");
+    navigator.clipboard.writeText("ante.dybedahl@gmail.com");
+});
+
+mailAddressButton.addEventListener("animationend", () => {
+    mailAddressButton.classList.remove("copied");
+});

@@ -39,8 +39,8 @@
     --clr-text: hsl(0, 0%, 100%);
     --clr-text-offset: hsl(206, 7%, 54%);
     --clr-border: hsl(0, 0%, 18%);
-    --clr-accent: hsl(4, 87%, 66%);
-    --clr-accent-offset: hsl(4, 87%, 72%);
+    --clr-accent: #f4675d;
+    --clr-accent-offset: hsl(4, 87%, 82%);
 
     --main-font: "Source Sans Pro", sans-serif;
     --secondary-font: "Source Serif Pro", serif;
@@ -122,9 +122,11 @@ h6,
 span,
 a,
 p,
-li {
+li,
+button {
     font-family: var(--main-font);
     color: var(--clr-text);
+    text-decoration: none;
 }
 
 .heading {
@@ -152,8 +154,12 @@ li {
 }
 
 .name {
-    grid-area: 4 / 2 / span 1 / span 3;
+    grid-area: 3 / 2 / span 1 / span 3;
     align-self: flex-end;
+}
+
+.skills-section {
+    grid-area: 4 / 2 / span 1 / span 3;
 }
 
 .heading {
@@ -162,7 +168,7 @@ li {
 }
 
 .about {
-    grid-area: 6 / 2 / span 7 / span 10;
+    grid-area: 6 / 2 / span 7 / span 8;
 }
 
 /* 
@@ -257,88 +263,211 @@ li {
 
 /* 
 ############################
-5. ??
+4.1 About - About Me
 ############################
 */
 
-.projects {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: 50vh;
-    grid-template-rows: 2fr 1fr;
+.about__content--me p {
+    width: 60ch;
+    font-style: italic;
+    opacity: 0;
 }
 
-.carousel::-webkit-scrollbar {
+.about__content--me p:nth-child(1) {
+    animation: fadeDrop 1s linear 1s forwards;
+    margin-bottom: 1rem;
+}
+
+.about__content--me p:nth-child(2) {
+    animation: fadeDrop 1s linear 1.5s forwards;
+}
+
+@keyframes fadeDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 
+############################
+4.2 About - Skills
+############################
+*/
+
+.about__content--skills {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(10, 1fr);
+}
+
+/* 
+############################
+4.3 About - Projects
+############################
+*/
+
+.project::-webkit-scrollbar {
     display: none;
 }
 
-.carousel {
+.project {
     position: relative;
     display: flex;
+    border-radius: 10px;
     grid-row: 1;
     height: 80%;
     width: 100%;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    list-style-type: none;
 }
 
-.carousel__card {
+.project__card {
+    position: relative;
     height: 100%;
     width: 100%;
-    background: red;
     margin-right: 5px;
     flex-shrink: 0;
     scroll-snap-align: start;
+    border-radius: 10px;
 }
 
-.carousel__dots {
+.project__dots {
     display: flex;
+    margin-top: 1rem;
     justify-content: center;
     align-items: center;
     gap: 5px;
     width: 100%;
 }
 
-.carousel__dot {
+.project__dot {
     display: inline-block;
     background: var(--clr-text-offset);
     border-radius: 100px;
     width: 20px;
     height: 8px;
-    transition: 400ms;
+    transition-property: width, height;
+    transition-duration: 0.5s;
     border: none;
     cursor: pointer;
 }
 
-.carousel__dot.active {
+.project__dot.active {
     width: 40px;
     height: 10px;
     background: var(--clr-text);
 }
 
+.wip::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url(./assets/img/wip2.jpg) center;
+    background-size: cover;
+    position: absolute;
+    filter: blur(3px) grayscale(1);
+}
+
+.wip::after {
+    content: "Work in progress";
+    position: absolute;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 5/1;
+    height: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #ffffff;
+    text-align: center;
+    color: black;
+    right: 2rem;
+    top: 0;
+}
+
 /* 
 ############################
-6. ???
+5. Footer
 ############################
 */
 
-header {
+.contact {
+    position: fixed;
     width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+    height: fit-content;
+    bottom: 0;
 }
 
-.navbar {
+.contact__container {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.navbar__item {
+.contact__container i {
+    position: relative;
     cursor: pointer;
-    margin: 2rem 0;
-    font-weight: 700;
-    text-transform: lowercase;
+    padding: 10px;
+    border: 2px solid var(--clr-text-offset);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    transition-property: color, border-color, scale;
+    transition-duration: 0.5s;
+}
+
+.contact__container i:hover {
+    color: var(--clr-accent);
+    border-color: var(--clr-accent);
+    scale: 1.1;
+}
+
+.contact--email--tooltip {
+    position: absolute;
+    left: 50%;
+    translate: -50% -100%;
+    top: 0;
+    opacity: 0;
+    color: inherit;
+    scale: 0.5;
+}
+
+.contact--email.copied .contact--email--tooltip {
+    animation-name: fadeInMoveUpFadeOut;
+    animation-duration: 600ms;
+}
+
+@keyframes fadeInMoveUpFadeOut {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-70%);
+        opacity: 0;
+        scale: 1;
+    }
+}
+
+/* 
+############################
+6. Font Awesome icons
+############################
+*/
+
+.fa-brands,
+.fa-regular {
+    color: var(--clr-text-offset);
+}
+
+.skills-section i {
+    font-size: 2rem;
+}
+
+.skills-section i + i {
+    margin-left: 1rem;
+    margin-top: 1rem;
 }

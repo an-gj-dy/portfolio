@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
     <script src="..\node_modules\intersection-observer\intersection-observer.js"></script>
+    <script src="https://kit.fontawesome.com/6a7c153a60.js" crossorigin="anonymous"></script>
     <script src="main.js" type="module" defer></script>
     <title>Portfolio</title>
 </head>
@@ -15,36 +16,60 @@
 <body>
     <main>
         <div class="main-wrapper">
-            <header>
-                <button class="contact">contact</button>
-            </header>
             <section class="home">
+                <!-- <a class="contact contact--style contact--cta" href="/contact.html">contact</a> -->
                 <h2 class="name name--accent">ANTE DYBEDAHL</h2>
+                <div class="skills-section"><i class="fa-brands fa-html5"></i>
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <i class="fa-brands fa-js"></i>
+                </div>
                 <h1 class="heading">Aspiring web developer</h1>
                 <div class="about about--grid">
                     <menu class="about__nav">
                         <li class="about__nav-item about__nav-item--me about__nav-item--selected">About me</li>
-                        <li class="about__nav-item about__nav-item--skills">Skills</li>
                         <li class="about__nav-item about__nav-item--projects">Projects</li>
                     </menu>
                     <div class="about__container">
-                        <article class="about__content about__content--me">About me</article>
-                        <article class="about__content about__content--skills">Skills</article>
+                        <article class="about__content about__content--me">
+                            <p>
+                                I am an aspiring front-end developer with a
+                                passion for creating visually appealing and user-friendly websites.
+                            </p>
+
+                            <p>
+                                I am currently working on building a strong foundation in HTML, CSS, and JavaScript, and
+                                I
+                                am constantly learning and exploring new front-end development tools and frameworks to
+                                expand my skills.
+                            </p>
+                        </article>
                         <article class="about__content about__content--projects">
-                            <ul class="carousel">
-                                <li class="carousel__card">Project 1</li>
-                                <li class="carousel__card">Project 2</li>
+                            <ul class="project">
+                                <li class="project__card project--dahl-kvist wip"></li>
+                                <li class="project__card project--platform-game wip"></li>
                             </ul>
-                            <div class="carousel__dots">
-                                <button class="carousel__dot"></button>
-                                <button class="carousel__dot"></button>
+                            <div class="project__dots">
+                                <button class="project__dot"></button>
+                                <button class="project__dot"></button>
                             </div>
                         </article>
+
                     </div>
                 </div>
             </section>
         </div>
     </main>
+    <footer class="contact">
+        <nav class="contact__container">
+            <a href="https://www.linkedin.com/in/ante-dybedahl-11aa727a/"><i
+                    class="contact--linkedin fa-brands fa-linkedin"></i></a>
+            <i class="contact--email fa-regular fa-envelope">
+                <span class="contact--email--tooltip">copied</span>
+            </i>
+            <a href="https://github.com/an-gj-dy"><i class="contact--github fa-brands fa-github"></i></a>
+            <a href="https://codepen.io/an-gj-dy"><i class="contact--codepen fa-brands fa-codepen"></i></a>
+        </nav>
+    </footer>
 </body>
 
 </html>
